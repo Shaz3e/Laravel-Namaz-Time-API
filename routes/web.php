@@ -8,20 +8,16 @@ use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController as AdminAuthe
 
 // Admin Controllers
 use App\Http\Controllers\Admin\AdminDashboardController;
-use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\InvoiceController;
 // User Login
-use App\Http\Controllers\User\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\User\Auth\NewPasswordController;
-use App\Http\Controllers\User\Auth\PasswordResetLinkController;
-use App\Http\Controllers\User\Auth\RegisteredUserController;
-use App\Http\Controllers\User\Auth\EmailVerificationController;
-use App\Http\Controllers\User\CompanyController as UserCompanyController;
-use App\Http\Controllers\User\InvoiceController as UserInvoiceController;
-// User Controller
-use App\Http\Controllers\User\UserDashboardController;
+// use App\Http\Controllers\User\Auth\AuthenticatedSessionController;
+// use App\Http\Controllers\User\Auth\NewPasswordController;
+// use App\Http\Controllers\User\Auth\PasswordResetLinkController;
+// use App\Http\Controllers\User\Auth\RegisteredUserController;
+// use App\Http\Controllers\User\Auth\EmailVerificationController;
+// // User Controller
+// use App\Http\Controllers\User\UserDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,17 +94,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         /**
          * Clients or Users
          */
-        Route::resource('users', UserController::class);
-
-        /**
-         * Invoice Management
-         */
-        Route::resource('invoice', InvoiceController::class);
-
-        /**
-         * Client Company Management
-         */
-        Route::resource('company', CompanyController::class);
+        // Route::resource('users', UserController::class);
 
         /**
          * Logout
@@ -122,7 +108,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 |                               User Routes
 |--------------------------------------------------------------------------
 */
-
+/*
 Route::middleware('guest')->group(function () {
 
     // Registeration
@@ -153,18 +139,9 @@ Route::middleware('auth')->group(function () {
     // Logout
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-    /**
-     * User Dashboard
-     */
+    
+    // User Dashboard
+     
     Route::get('/', [UserDashboardController::class, 'dashboard'])->name('dashboard');
-
-    /**
-     * My Invoices
-     */
-    Route::get('my-invoices', [UserInvoiceController::class, 'index']);
-
-    /**
-     * My Company
-     */
-    Route::resource('my-company', UserCompanyController::class);
 });
+*/

@@ -24,12 +24,6 @@ class AdminSeeder extends Seeder
                 'password' => Hash::make('123456789'),
                 'is_active' => 1,
             ],
-            [
-                'name' => 'Admin',
-                'email' => 'admin1@email.com',
-                'password' => Hash::make('123456789'),
-                'is_active' => 1,
-            ],
         ];
 
         DB::table('admins')->insert($admins);

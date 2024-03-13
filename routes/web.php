@@ -51,7 +51,7 @@ Route::get('error/500', function () {
     return view('errors.500');
 })->name('error.500');
 
-Route::get('/today-prayer-time', function(){
+Route::get('/today-prayer-time', function () {
     return view('today-prayer-time');
 });
 
@@ -100,6 +100,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
          * Namaz Times
          */
         Route::resource('prayer-times', PrayerTimeController::class);
+        Route::get('/import-prayer-times', [PrayerTimeController::class, 'importPrayerTimes'])
+            ->name('import.prayer.times');
+        Route::post('/import-prayer-times', [PrayerTimeController::class, 'importPrayerTimesPost'])
+            ->name('import.prayer.times.post');
 
         /**
          * Clients or Users

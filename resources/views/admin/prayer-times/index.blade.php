@@ -34,6 +34,9 @@
                 <div class="card-header">
                     <h3 class="card-title">View all prayer times</h3>
                     <div class="card-tools">
+                        
+                        <a href="{{ route('admin.import.prayer.times') }}" class="btn btn-flat btn-sm btn-theme"><i
+                            class="fa-regular fa-square-plus"></i> Import CSV File</a>
                         <a href="{{ route('admin.prayer-times.create') }}" class="btn btn-flat btn-sm btn-theme"><i
                                 class="fa-regular fa-square-plus"></i> Create
                             New</a>

@@ -150,7 +150,7 @@ class PrayerTimeController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'prayer_date' => 'required|date_format:Y-m-d|unique:prayer_times,date,'. $id,
+                'prayer_date' => 'required|date_format:Y-m-d|unique:prayer_times,date,' . $id,
                 'fajr' => 'required',
                 'sunrise' => 'required',
                 'zuhr' => 'required',
@@ -180,7 +180,7 @@ class PrayerTimeController extends Controller
             'maghrib' => date('H:i:s', strtotime($request->maghrib)),
             'isha' => date('H:i:s', strtotime($request->isha))
         ];
-        
+
         $data = PrayerTime::find($id);
         $data->date = $prayerTime['date'];
         $data->fajr = $prayerTime['fajr'];
@@ -189,7 +189,7 @@ class PrayerTimeController extends Controller
         $data->asr = $prayerTime['asr'];
         $data->maghrib = $prayerTime['maghrib'];
         $data->isha = $prayerTime['isha'];
-        
+
         // Save Data to PrayerTime Table
         $data->save();
 
@@ -216,5 +216,38 @@ class PrayerTimeController extends Controller
                 'text' => 'Prayer Time not found',
             ]);
         }
+    }
+
+    /**
+     * Import Prayer Time
+     */
+    public function importPrayerTimes()
+    {
+        return view($this->view . 'import');
+    }
+
+    /**
+     * 
+     */
+    public function importPrayerTimesPost(Request $request)
+    {
+        $file = $request->file('file');
+        $fileContents = file($file->getPathname());
+        foreach ($fileContents as $line) {
+            $data = str_getcsv($line);
+
+            PrayerTime::create([
+                'date'      => date('Y-m-d', strtotime($data[0])),
+                'fajr'      => date('H:i:s', strtotime($data[1])),
+                'sunrise'   => date('H:i:s', strtotime($data[2])),
+                'zuhr'      => date('H:i:s', strtotime($data[3])),
+                'asr'       => date('H:i:s', strtotime($data[4])),
+                'maghrib'   => date('H:i:s', strtotime($data[5])),
+                'isha'      => date('H:i:s', strtotime($data[6])),
+            ]);
+        }
+        return redirect()->back()->with('message', [
+            'text' => 'CSV file imported successfully.'
+        ]);
     }
 }

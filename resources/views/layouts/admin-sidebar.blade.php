@@ -53,6 +53,15 @@
                     </a>
                 </li> --}}
 
+                {{-- Namaz Time --}}
+                <li class="nav-item">
+                    <a href="{{ route('admin.prayer-times.index') }}"
+                        class="nav-link {{ request()->routeIs('admin.prayer-times.*') ? 'active' : '' }}">
+                        <i class="nav-icon fa-solid fa-users"></i>
+                        <p>Prayer Times</p>
+                    </a>
+                </li>
+
                 {{-- Logout --}}
                 <li class="nav-item">
                     <a href="javascript:void(0)" onclick="$('#logout-form').submit();" class="nav-link">

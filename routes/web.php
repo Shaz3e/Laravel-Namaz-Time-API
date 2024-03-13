@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController as AdminAuthe
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\PrayerTimeController;
+
 // User Login
 // use App\Http\Controllers\User\Auth\AuthenticatedSessionController;
 // use App\Http\Controllers\User\Auth\NewPasswordController;
@@ -49,6 +51,9 @@ Route::get('error/500', function () {
     return view('errors.500');
 })->name('error.500');
 
+Route::get('/today-prayer-time', function(){
+    return view('today-prayer-time');
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -90,6 +95,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
          * Admin Users
          */
         Route::resource('staff', StaffController::class);
+
+        /**
+         * Namaz Times
+         */
+        Route::resource('prayer-times', PrayerTimeController::class);
 
         /**
          * Clients or Users

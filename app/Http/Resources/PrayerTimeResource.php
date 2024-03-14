@@ -27,12 +27,21 @@ class PrayerTimeResource extends JsonResource
         // return parent::toArray($request);
         return [
             'date' => $formatDate($this->date),
+            'fajr_azan' => $formatTime($this->fajr_azan),
             'fajr' => $formatTime($this->fajr),
             'sunrise' => $formatTime($this->sunrise),
+            'zuhr_azan' => $formatTime($this->zuhr_azan),
             'zuhr' => $formatTime($this->zuhr),
+            'asr_azan' => $formatTime($this->asr_azan),
             'asr' => $formatTime($this->asr),
+            'maghrib_azan' => $formatTime($this->maghrib_azan),
             'maghrib' => $formatTime($this->maghrib),
-            'isha' => $formatTime($this->isha)
+            'isha_azan' => $formatTime($this->isha_azan),
+            'isha' => $formatTime($this->isha),
+            'first_jumma_khutba' => $this->first_jumma_khutba ? $formatTime($this->first_jumma_khutba) : 'Not Available',
+            'first_jumma' => $this->first_jumma ? $formatTime($this->first_jumma) : 'Not Available',
+            'second_jumma_khutba' => $this->second_jumma_khutba ? $formatTime($this->second_jumma_khutba) : 'Not Available',
+            'second_jumma' => $this->second_jumma ? $formatTime($this->second_jumma) : 'Not Available',
         ];
     }
 }

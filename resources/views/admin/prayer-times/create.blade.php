@@ -46,8 +46,8 @@
                     @csrf
                     <div class="card-body">
                         <div class="row">
-                            <label class="col-lg-2 col-md-2 col-sm-12">Date</label>
-                            <div class="col-lg-3 col-md-3 col-sm-12">
+                            <label class="col-lg-3 col-md-3 col-sm-12">Date</label>
+                            <div class="col-lg-2 col-md-3 col-sm-12">
                                 <div class="form-group">
                                     <div class="input-group date" id="prayer_date" data-target-input="nearest">
                                         <input type="text" name="prayer_date" class="form-control datetimepicker-input"
@@ -59,26 +59,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        {{-- /.row --}}
-                        <div class="row">
-                            <label class="col-lg-2 col-md-2 col-sm-12">Fajr Prayer Time</label>
-                            <div class="col-lg-3 col-md-3 col-sm-12">
-                                <div class="form-group">
-                                    <div class="input-group date" id="fajr" data-target-input="nearest">
-                                        <input type="text" name="fajr" class="form-control datetimepicker-input"
-                                        data-target="#fajr" value="{{ old('fajr') }}" />
-                                        <div class="input-group-append" data-target="#fajr" data-toggle="datetimepicker">
-                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{-- /.row --}}
-                        <div class="row">
-                            <label class="col-lg-2 col-md-2 col-sm-12">Sunrise Time</label>
-                            <div class="col-lg-3 col-md-3 col-sm-12">
+                            
+                            <label class="col-lg-3 col-md-3 col-sm-12">Sunrise Time</label>
+                            <div class="col-lg-2 col-md-3 col-sm-12">
                                 <div class="form-group">
                                     <div class="input-group date" id="sunrise" data-target-input="nearest">
                                         <input type="text" name="sunrise" class="form-control datetimepicker-input"
@@ -91,9 +74,52 @@
                             </div>
                         </div>
                         {{-- /.row --}}
+
                         <div class="row">
-                            <label class="col-lg-2 col-md-2 col-sm-12">Zuhr Prayer Time</label>
-                            <div class="col-lg-3 col-md-3 col-sm-12">
+                            <label class="col-lg-3 col-md-3 col-sm-12">Fajr Adhan Time</label>
+                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                <div class="form-group">
+                                    <div class="input-group date" id="fajr_azan" data-target-input="nearest">
+                                        <input type="text" name="fajr_azan" class="form-control datetimepicker-input"
+                                        data-target="#fajr_azan" value="{{ old('fajr_azan') }}" />
+                                        <div class="input-group-append" data-target="#fajr_azan" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <label class="col-lg-3 col-md-3 col-sm-12">Fajr Prayer Time</label>
+                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                <div class="form-group">
+                                    <div class="input-group date" id="fajr" data-target-input="nearest">
+                                        <input type="text" name="fajr" class="form-control datetimepicker-input"
+                                        data-target="#fajr" value="{{ old('fajr') }}" />
+                                        <div class="input-group-append" data-target="#fajr" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- /.row --}}
+
+                        <div class="row">
+                            <label class="col-lg-3 col-md-3 col-sm-12">Zuhr Adhan Time</label>
+                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                <div class="form-group">
+                                    <div class="input-group date" id="zuhr_azan" data-target-input="nearest">
+                                        <input type="text" name="zuhr_azan" class="form-control datetimepicker-input"
+                                        data-target="#zuhr_azan" value="{{ old('zuhr_azan') }}" />
+                                        <div class="input-group-append" data-target="#zuhr_azan" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <label class="col-lg-3 col-md-3 col-sm-12">Zuhr Prayer Time</label>
+                            <div class="col-lg-2 col-md-3 col-sm-12">
                                 <div class="form-group">
                                     <div class="input-group date" id="zuhr" data-target-input="nearest">
                                         <input type="text" name="zuhr" class="form-control datetimepicker-input"
@@ -107,8 +133,21 @@
                         </div>
                         {{-- /.row --}}
                         <div class="row">
-                            <label class="col-lg-2 col-md-2 col-sm-12">Asr Prayer Time</label>
-                            <div class="col-lg-3 col-md-3 col-sm-12">
+                            <label class="col-lg-3 col-md-3 col-sm-12">Asr Adhan Time</label>
+                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                <div class="form-group">
+                                    <div class="input-group date" id="asr_azan" data-target-input="nearest">
+                                        <input type="text" name="asr_azan" class="form-control datetimepicker-input"
+                                        data-target="#asr_azan" value="{{ old('asr_azan') }}" />
+                                        <div class="input-group-append" data-target="#asr_azan" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <label class="col-lg-3 col-md-3 col-sm-12">Asr Prayer Time</label>
+                            <div class="col-lg-2 col-md-3 col-sm-12">
                                 <div class="form-group">
                                     <div class="input-group date" id="asr" data-target-input="nearest">
                                         <input type="text" name="asr" class="form-control datetimepicker-input"
@@ -122,8 +161,21 @@
                         </div>
                         {{-- /.row --}}
                         <div class="row">
-                            <label class="col-lg-2 col-md-2 col-sm-12">Maghrib Prayer Time</label>
-                            <div class="col-lg-3 col-md-3 col-sm-12">
+                            <label class="col-lg-3 col-md-3 col-sm-12">Maghrib Adhan Time</label>
+                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                <div class="form-group">
+                                    <div class="input-group date" id="maghrib_azan" data-target-input="nearest">
+                                        <input type="text" name="maghrib_azan" class="form-control datetimepicker-input"
+                                        data-target="#maghrib_azan" value="{{ old('maghrib_azan') }}" />
+                                        <div class="input-group-append" data-target="#maghrib_azan" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <label class="col-lg-3 col-md-3 col-sm-12">Maghrib Prayer Time</label>
+                            <div class="col-lg-2 col-md-3 col-sm-12">
                                 <div class="form-group">
                                     <div class="input-group date" id="maghrib" data-target-input="nearest">
                                         <input type="text" name="maghrib" class="form-control datetimepicker-input"
@@ -137,13 +189,82 @@
                         </div>
                         {{-- /.row --}}
                         <div class="row">
-                            <label class="col-lg-2 col-md-2 col-sm-12">Isha Prayer Time</label>
-                            <div class="col-lg-3 col-md-3 col-sm-12">
+                            <label class="col-lg-3 col-md-3 col-sm-12">Isha Adhan Time</label>
+                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                <div class="form-group">
+                                    <div class="input-group date" id="isha_azan" data-target-input="nearest">
+                                        <input type="text" name="isha_azan" class="form-control datetimepicker-input"
+                                        data-target="#isha_azan" value="{{ old('isha_azan') }}" />
+                                        <div class="input-group-append" data-target="#isha_azan" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <label class="col-lg-3 col-md-3 col-sm-12">Isha Prayer Time</label>
+                            <div class="col-lg-2 col-md-3 col-sm-12">
                                 <div class="form-group">
                                     <div class="input-group date" id="isha" data-target-input="nearest">
                                         <input type="text" name="isha" class="form-control datetimepicker-input"
                                         data-target="#isha" value="{{ old('isha') }}" />
                                         <div class="input-group-append" data-target="#isha" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- /.row --}}
+                        <div class="row">
+                            <label class="col-lg-3 col-md-3 col-sm-12">First Khuthbah Time</label>
+                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                <div class="form-group">
+                                    <div class="input-group date" id="first_jumma_khutba" data-target-input="nearest">
+                                        <input type="text" name="first_jumma_khutba" class="form-control datetimepicker-input"
+                                        data-target="#first_jumma_khutba" value="{{ old('first_jumma_khutba') }}" />
+                                        <div class="input-group-append" data-target="#first_jumma_khutba" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <label class="col-lg-3 col-md-3 col-sm-12">First Friday Prayer Time</label>
+                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                <div class="form-group">
+                                    <div class="input-group date" id="first_jumma" data-target-input="nearest">
+                                        <input type="text" name="first_jumma" class="form-control datetimepicker-input"
+                                        data-target="#first_jumma" value="{{ old('first_jumma') }}" />
+                                        <div class="input-group-append" data-target="#first_jumma" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- /.row --}}
+                        <div class="row">
+                            <label class="col-lg-3 col-md-3 col-sm-12">Second Khuthbah Time</label>
+                            <div class="col-lg-2 col-md-3 col-sm-12">
+                                <div class="form-group">
+                                    <div class="input-group date" id="second_jumma_khutba" data-target-input="nearest">
+                                        <input type="text" name="second_jumma_khutba" class="form-control datetimepicker-input"
+                                        data-target="#second_jumma_khutba" value="{{ old('second_jumma_khutba') }}" />
+                                        <div class="input-group-append" data-target="#second_jumma_khutba" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <label class="col-lg-3 col-md-3 col-sm-12">Second Friday Prayer Time</label>
+                            <div class="col-lg-2 col-md-2 col-sm-12">
+                                <div class="form-group">
+                                    <div class="input-group date" id="second_jumma" data-target-input="nearest">
+                                        <input type="text" name="second_jumma" class="form-control datetimepicker-input"
+                                        data-target="#second_jumma" value="{{ old('second_jumma') }}" />
+                                        <div class="input-group-append" data-target="#second_jumma" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
                                     </div>
@@ -182,6 +303,9 @@
             }
         });
         // Fajr
+        $('#fajr_azan').datetimepicker({
+            format: 'LT'
+        });
         $('#fajr').datetimepicker({
             format: 'LT'
         });
@@ -190,19 +314,43 @@
             format: 'LT'
         });
         // zuhr
+        $('#zuhr_azan').datetimepicker({
+            format: 'LT'
+        });
         $('#zuhr').datetimepicker({
             format: 'LT'
         });
         // asr
+        $('#asr_azan').datetimepicker({
+            format: 'LT'
+        });
         $('#asr').datetimepicker({
             format: 'LT'
         });
         // Fajr
+        $('#maghrib_azan').datetimepicker({
+            format: 'LT'
+        });
         $('#maghrib').datetimepicker({
             format: 'LT'
         });
         // isha
+        $('#isha_azan').datetimepicker({
+            format: 'LT'
+        });
         $('#isha').datetimepicker({
+            format: 'LT'
+        });
+        $('#first_jumma_khutba').datetimepicker({
+            format: 'LT'
+        });
+        $('#first_jumma').datetimepicker({
+            format: 'LT'
+        });
+        $('#second_jumma_khutba').datetimepicker({
+            format: 'LT'
+        });
+        $('#second_jumma').datetimepicker({
             format: 'LT'
         });
 

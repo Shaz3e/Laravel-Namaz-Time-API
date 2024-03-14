@@ -11,11 +11,20 @@ class PrayerTime extends Model
 
     protected $fillable = [
         'date',
-        'fajr',
         'sunrise',
+        'fajr_azan',
+        'fajr',
+        'zuhr_azan',
         'zuhr',
+        'asr_azan',
         'asr',
+        'maghrib_azan',
         'maghrib',
+        'isha_azan',
         'isha',
+        'first_jumma_khutba',
+        'first_jumma',
+        'second_jumma_khutba',
+        'second_jumma',
     ];
 }

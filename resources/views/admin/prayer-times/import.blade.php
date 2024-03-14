@@ -42,12 +42,19 @@
                     <form action="{{ route('admin.import.prayer.times.post') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
-                        <input type="file" name="file" accept=".csv">
+                        <input type="file" name="file" accept=".csv" required>
                         <button type="submit" class="btn btn-primary btn-theme">Import CSV</button>
                     </form>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Instructions</h6>
+                            <p>Download sample file and fill it with data. Make sure to delete header row before uploading and date should not be duplicated other wise system will show error and file will import only data before error occurs.</p>
+                        </div>
+                    </div>
                     <a href="{{ asset('downloads/sample_file_prayer_time.csv') }}" class="btn btn-default btn-sm "><i
                             class="fas fa-cloud-download-alt"></i> Download Sample File</a>
                 </div>

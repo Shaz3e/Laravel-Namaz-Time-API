@@ -34,9 +34,9 @@
                 <div class="card-header">
                     <h3 class="card-title">View all prayer times</h3>
                     <div class="card-tools">
-                        
+
                         <a href="{{ route('admin.import.prayer.times') }}" class="btn btn-flat btn-sm btn-theme"><i
-                            class="fa-regular fa-square-plus"></i> Import CSV File</a>
+                                class="fa-regular fa-square-plus"></i> Import CSV File</a>
                         <a href="{{ route('admin.prayer-times.create') }}" class="btn btn-flat btn-sm btn-theme"><i
                                 class="fa-regular fa-square-plus"></i> Create
                             New</a>
@@ -54,6 +54,7 @@
                                 <th>Asr</th>
                                 <th>Maghrib</th>
                                 <th>Isha</th>
+                                <th>Jummah Prayer</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -61,14 +62,54 @@
                             @foreach ($prayerTime as $time)
                                 <tr>
                                     <td>{{ PrayerDate($time->date) }}</td>
-                                    <td>{{ $time->fajr }}</td>
-                                    <td>{{ $time->sunrise }}</td>
-                                    <td>{{ $time->zuhr }}</td>
-                                    <td>{{ $time->asr }}</td>
-                                    <td>{{ $time->maghrib }}</td>
-                                    <td>{{ $time->isha }}</td>
                                     <td>
-                                        <a class="btn btn-flat btn-primary"
+                                        <span class="badge badge-primary">Adhan Time:</span> <span
+                                            class="badge badge-success">{{ $time->fajr_azan }}</span>
+                                        <span class="badge badge-primary">Prayer Time:</span> <span
+                                            class="badge badge-success">{{ $time->fajr }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-warning">{{ $time->sunrise }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-primary">Adhan Time</span> <span
+                                            class="badge badge-success"> {{ $time->zuhr_azan }}</span>
+                                        <span class="badge badge-primary">Prayer Time</span> <span
+                                            class="badge badge-success"> {{ $time->zuhr }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-primary">Adhan Time</span> <span
+                                            class="badge badge-success"> {{ $time->asr_azan }}</span>
+                                        <span class="badge badge-primary">Prayer Time</span> <span
+                                            class="badge badge-success"> {{ $time->asr }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-primary">Adhan Time</span> <span
+                                            class="badge badge-success"> {{ $time->maghrib_azan }}</span>
+                                        <span class="badge badge-primary">Prayer Time</span> <span
+                                            class="badge badge-success"> {{ $time->maghrib }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-primary">Adhan Time</span> <span
+                                            class="badge badge-success"> {{ $time->isha_azan }}</span>
+                                        <span class="badge badge-primary">Prayer Time</span> <span
+                                            class="badge badge-success"> {{ $time->isha }}</span>
+                                    </td>
+                                    <td>
+                                        @if($time->first_jumma_khutba != null)
+                                        <span class="badge badge-primary">First Khuthbah Time</span> <span
+                                            class="badge badge-success"> {{ $time->first_jumma_khutba }}</span>
+                                        <span class="badge badge-primary">First Friday Prayer Time</span> <span
+                                            class="badge badge-success"> {{ $time->first_jumma }}</span>
+                                        <br>
+                                        <span class="badge badge-primary">Second Khuthbah Time</span> <span
+                                            class="badge badge-success"> {{ $time->second_jumma_khutba }}</span>
+                                        <span class="badge badge-primary">Second Friday Prayer Time</span> <span
+                                            class="badge badge-success"> {{ $time->second_jumma }}</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-sm btn-flat btn-primary"
                                             href="{{ route('admin.prayer-times.edit', $time->id) }}">
                                             <i class="fa-regular fa-pen-to-square"></i>
                                         </a>
@@ -78,7 +119,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <button type="button" onclick="DeleteFormSubmit(this)"
-                                                class="btn btn-flat btn-danger">
+                                                class="btn btn-sm btn-flat btn-danger">
                                                 <i class="fa-solid fa-trash-can"></i>
                                                 </a>
                                         </form>

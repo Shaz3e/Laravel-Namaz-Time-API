@@ -17,6 +17,21 @@ class PrayerTimeController extends Controller
 
     public function todayPrayerTime(PrayerTime $prayerTime)
     {
-        return new PrayerTimeResource($prayerTime->whereDate('created_at', now())->first());
+        // return new PrayerTimeResource($prayerTime->whereDate('date', now())->first());
+        // Get the current date
+        $currentDate = now()->toDateString();
+
+        // Get the upcoming Friday date
+        $upcomingFridayDate = now()->next('Friday')->toDateString();
+
+        // Retrieve the prayer time for the current day or the upcoming Friday
+        $prayerTime = PrayerTime::whereDate('date', $currentDate)
+            ->orWhere(function ($query) use ($upcomingFridayDate) {
+                $query->whereDate('date', $upcomingFridayDate)
+                    ->whereNotNull('first_jumma_khutba');
+            })
+            ->first();
+
+        return new PrayerTimeResource($prayerTime);
     }
 }

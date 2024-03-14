@@ -51,7 +51,7 @@ Route::get('error/500', function () {
     return view('errors.500');
 })->name('error.500');
 
-Route::get('/today-prayer-time', function () {
+Route::get('/', function () {
     return view('today-prayer-time');
 });
 

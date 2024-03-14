@@ -45,11 +45,16 @@ class PrayerTimeController extends Controller
             $request->all(),
             [
                 'prayer_date' => 'required|date_format:Y-m-d|unique:prayer_times,date',
-                'fajr' => 'required',
                 'sunrise' => 'required',
+                'fajr_azan' => 'required',
+                'fajr' => 'required',
+                'zuhr_azan' => 'required',
                 'zuhr' => 'required',
+                'asr_azan' => 'required',
                 'asr' => 'required',
+                'maghrib_azan' => 'required',
                 'maghrib' => 'required',
+                'isha_azan' => 'required',
                 'isha' => 'required',
             ],
             [
@@ -69,22 +74,67 @@ class PrayerTimeController extends Controller
 
         $prayerTime = [
             'date' => $request->prayer_date,
+
+            'fajr_azan' => date('H:i:s', strtotime($request->fajr_azan)),
             'fajr' => date('H:i:s', strtotime($request->fajr)),
+
             'sunrise' => date('H:i:s', strtotime($request->sunrise)),
+
+            'zuhr_azan' => date('H:i:s', strtotime($request->zuhr_azan)),
             'zuhr' => date('H:i:s', strtotime($request->zuhr)),
+
+            'asr_azan' => date('H:i:s', strtotime($request->asr_azan)),
             'asr' => date('H:i:s', strtotime($request->asr)),
+
+            'maghrib_azan' => date('H:i:s', strtotime($request->maghrib_azan)),
             'maghrib' => date('H:i:s', strtotime($request->maghrib)),
-            'isha' => date('H:i:s', strtotime($request->isha))
+
+            'isha_azan' => date('H:i:s', strtotime($request->isha_azan)),
+            'isha' => date('H:i:s', strtotime($request->isha)),
+
+            'first_jumma_khutba' => date('H:i:s', strtotime($request->first_jumma_khutba)),
+            'first_jumma' => date('H:i:s', strtotime($request->first_jumma)),
+            'second_jumma_khutba' => date('H:i:s', strtotime($request->second_jumma_khutba)),
+            'second_jumma' => date('H:i:s', strtotime($request->second_jumma)),
         ];
 
         $data = new PrayerTime();
         $data->date = $prayerTime['date'];
+        $data->fajr_azan = $prayerTime['fajr_azan'];
         $data->fajr = $prayerTime['fajr'];
         $data->sunrise = $prayerTime['sunrise'];
+        $data->zuhr_azan = $prayerTime['zuhr_azan'];
         $data->zuhr = $prayerTime['zuhr'];
+        $data->asr_azan = $prayerTime['asr_azan'];
         $data->asr = $prayerTime['asr'];
+        $data->maghrib_azan = $prayerTime['maghrib_azan'];
         $data->maghrib = $prayerTime['maghrib'];
+        $data->isha_azan = $prayerTime['isha_azan'];
         $data->isha = $prayerTime['isha'];
+
+        if (!empty($request->first_jumma_khutba)) {
+            $data->first_jumma_khutba = $prayerTime['first_jumma_khutba'];
+        }else{
+            $data->first_jumma_khutba = null;
+        }
+
+        if (!empty($request->first_jumma)) {
+            $data->first_jumma = $prayerTime['first_jumma'];
+        }else{
+            $data->first_jumma = null;
+        }
+
+        if (!empty($request->second_jumma_khutba)) {
+            $data->second_jumma_khutba = $prayerTime['second_jumma_khutba'];
+        }else{
+            $data->second_jumma_khutba = null;
+        }
+
+        if (!empty($request->second_jumma)) {
+            $data->second_jumma = $prayerTime['second_jumma'];
+        }else{
+            $data->second_jumma = null;
+        }
 
         // Save Data
         $data->save();
@@ -146,16 +196,20 @@ class PrayerTimeController extends Controller
             ]);
             return redirect()->route('admin.prayer-times.index');
         }
-
         $validator = Validator::make(
             $request->all(),
             [
                 'prayer_date' => 'required|date_format:Y-m-d|unique:prayer_times,date,' . $id,
-                'fajr' => 'required',
                 'sunrise' => 'required',
+                'fajr_azan' => 'required',
+                'fajr' => 'required',
+                'zuhr_azan' => 'required',
                 'zuhr' => 'required',
+                'asr_azan' => 'required',
                 'asr' => 'required',
+                'maghrib_azan' => 'required',
                 'maghrib' => 'required',
+                'isha_azan' => 'required',
                 'isha' => 'required',
             ],
             [
@@ -171,26 +225,73 @@ class PrayerTimeController extends Controller
             return redirect()->back()->withInput();
         }
 
+        // dd($request->all());
+
         $prayerTime = [
             'date' => $request->prayer_date,
+
+            'fajr_azan' => date('H:i:s', strtotime($request->fajr_azan)),
             'fajr' => date('H:i:s', strtotime($request->fajr)),
+
             'sunrise' => date('H:i:s', strtotime($request->sunrise)),
+
+            'zuhr_azan' => date('H:i:s', strtotime($request->zuhr_azan)),
             'zuhr' => date('H:i:s', strtotime($request->zuhr)),
+
+            'asr_azan' => date('H:i:s', strtotime($request->asr_azan)),
             'asr' => date('H:i:s', strtotime($request->asr)),
+
+            'maghrib_azan' => date('H:i:s', strtotime($request->maghrib_azan)),
             'maghrib' => date('H:i:s', strtotime($request->maghrib)),
-            'isha' => date('H:i:s', strtotime($request->isha))
+
+            'isha_azan' => date('H:i:s', strtotime($request->isha_azan)),
+            'isha' => date('H:i:s', strtotime($request->isha)),
+
+            'first_jumma_khutba' => date('H:i:s', strtotime($request->first_jumma_khutba)),
+            'first_jumma' => date('H:i:s', strtotime($request->first_jumma)),
+            'second_jumma_khutba' => date('H:i:s', strtotime($request->second_jumma_khutba)),
+            'second_jumma' => date('H:i:s', strtotime($request->second_jumma)),
         ];
 
         $data = PrayerTime::find($id);
         $data->date = $prayerTime['date'];
+        $data->fajr_azan = $prayerTime['fajr_azan'];
         $data->fajr = $prayerTime['fajr'];
         $data->sunrise = $prayerTime['sunrise'];
+        $data->zuhr_azan = $prayerTime['zuhr_azan'];
         $data->zuhr = $prayerTime['zuhr'];
+        $data->asr_azan = $prayerTime['asr_azan'];
         $data->asr = $prayerTime['asr'];
+        $data->maghrib_azan = $prayerTime['maghrib_azan'];
         $data->maghrib = $prayerTime['maghrib'];
+        $data->isha_azan = $prayerTime['isha_azan'];
         $data->isha = $prayerTime['isha'];
 
-        // Save Data to PrayerTime Table
+        if (!empty($request->first_jumma_khutba)) {
+            $data->first_jumma_khutba = $prayerTime['first_jumma_khutba'];
+        }else{
+            $data->first_jumma_khutba = null;
+        }
+
+        if (!empty($request->first_jumma)) {
+            $data->first_jumma = $prayerTime['first_jumma'];
+        }else{
+            $data->first_jumma = null;
+        }
+
+        if (!empty($request->second_jumma_khutba)) {
+            $data->second_jumma_khutba = $prayerTime['second_jumma_khutba'];
+        }else{
+            $data->second_jumma_khutba = null;
+        }
+
+        if (!empty($request->second_jumma)) {
+            $data->second_jumma = $prayerTime['second_jumma'];
+        }else{
+            $data->second_jumma = null;
+        }
+
+        // Save Data
         $data->save();
 
         // Return to route and show session flash message
@@ -238,12 +339,17 @@ class PrayerTimeController extends Controller
 
             PrayerTime::create([
                 'date'      => date('Y-m-d', strtotime($data[0])),
-                'fajr'      => date('H:i:s', strtotime($data[1])),
-                'sunrise'   => date('H:i:s', strtotime($data[2])),
-                'zuhr'      => date('H:i:s', strtotime($data[3])),
-                'asr'       => date('H:i:s', strtotime($data[4])),
-                'maghrib'   => date('H:i:s', strtotime($data[5])),
-                'isha'      => date('H:i:s', strtotime($data[6])),
+                'fajr_azan'      => date('H:i:s', strtotime($data[1])),
+                'fajr'      => date('H:i:s', strtotime($data[2])),
+                'sunrise'   => date('H:i:s', strtotime($data[3])),
+                'zuhr_azan' => date('H:i:s', strtotime($data[4])),
+                'zuhr'      => date('H:i:s', strtotime($data[5])),
+                'asr_azan'  => date('H:i:s', strtotime($data[6])),
+                'asr'       => date('H:i:s', strtotime($data[7])),
+                'maghrib_azan' => date('H:i:s', strtotime($data[8])),
+                'maghrib'   => date('H:i:s', strtotime($data[9])),
+                'isha_azan' => date('H:i:s', strtotime($data[10])),
+                'isha'      => date('H:i:s', strtotime($data[11])),
             ]);
         }
         return redirect()->back()->with('message', [

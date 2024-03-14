@@ -45,29 +45,20 @@
                 </li>
 
                 {{-- Users --}}
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ URL::to('/admin/users') }}"
                         class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
                         <i class="nav-icon fa-solid fa-users"></i>
                         <p>Users Management</p>
                     </a>
-                </li>
+                </li> --}}
 
-                {{-- Invoice --}}
+                {{-- Namaz Time --}}
                 <li class="nav-item">
-                    <a href="{{ URL::to('/admin/invoice') }}"
-                        class="nav-link {{ request()->is('admin/invoice') || request()->is('admin/invoice/*') ? 'active' : '' }}">
-                        <i class="nav-icon fa-solid fa-file-invoice-dollar"></i>
-                        <p>Invoice Management</p>
-                    </a>
-                </li>
-
-                {{-- company --}}
-                <li class="nav-item">
-                    <a href="{{ URL::to('/admin/company') }}"
-                        class="nav-link {{ request()->is('admin/company') || request()->is('admin/company/*') ? 'active' : '' }}">
-                        <i class="nav-icon fa-solid fa-building"></i>
-                        <p>Company Management</p>
+                    <a href="{{ route('admin.prayer-times.index') }}"
+                        class="nav-link {{ request()->routeIs('admin.prayer-times.*') ? 'active' : '' }}">
+                        <i class="nav-icon fa-solid fa-users"></i>
+                        <p>Prayer Times</p>
                     </a>
                 </li>
 

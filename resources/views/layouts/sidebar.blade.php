@@ -45,24 +45,6 @@
                     </a>
                 </li>
 
-                {{-- Invoice --}}
-                <li class="nav-item">
-                    <a href="{{ URL::to('/my-invoices') }}"
-                        class="nav-link {{ request()->is('/my-invoices/*') || request()->is('/my-invoices') ? 'active' : '' }}">
-                        <i class="nav-icon fa-solid fa-file-invoice-dollar"></i>
-                        <p>My Invoices</p>
-                    </a>
-                </li>
-
-                {{-- Company --}}
-                <li class="nav-item">
-                    <a href="{{ URL::to('/my-company') }}"
-                        class="nav-link {{ request()->is('/my-company/*') || request()->is('/my-company') ? 'active' : '' }}">
-                        <i class="nav-icon fa-solid fa-file-invoice-dollar"></i>
-                        <p>My Company</p>
-                    </a>
-                </li>
-
                 {{-- Logout --}}
                 <li class="nav-item">
                     <a href="javascript:void(0)" onclick="$('#logout-form').submit();"

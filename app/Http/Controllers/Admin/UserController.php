@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Invoice;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -200,19 +198,19 @@ class UserController extends Controller
 
         if ($user) {
             // Get the associated invoices for the user
-            $invoices = Invoice::where('user_id', $id)->get();
+            // $invoices = Invoice::where('user_id', $id)->get();
 
             // Delete the associated invoices
-            foreach ($invoices as $invoice) {
-                $invoice->delete();
+            // foreach ($invoices as $invoice) {
+            //     $invoice->delete();
 
-                // Optionally, you can also delete the associated PDF files here
-                // Make sure to adjust the file path as needed
-                $filePath = public_path('invoice') . '/' . $invoice->pdf_file;
-                if (File::exists($filePath)) {
-                    File::delete($filePath);
-                }
-            }
+            //     // Optionally, you can also delete the associated PDF files here
+            //     // Make sure to adjust the file path as needed
+            //     $filePath = public_path('invoice') . '/' . $invoice->pdf_file;
+            //     if (File::exists($filePath)) {
+            //         File::delete($filePath);
+            //     }
+            // }
             
             // Delete the user
             $user->delete();

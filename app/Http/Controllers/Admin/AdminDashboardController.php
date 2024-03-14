@@ -26,10 +26,6 @@ class AdminDashboardController extends Controller
     {
         $id = Auth::guard('admin')->user()->id;
 
-
-
-
-
         $data = Admin::find($id);
 
         return view($this->view . 'profile.index', compact('data'));

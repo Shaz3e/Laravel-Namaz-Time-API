@@ -15,7 +15,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Companies List</h1>
+                        <h1>Prayer Times</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -32,9 +32,12 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">View all invoices</h3>
+                    <h3 class="card-title">View all prayer times</h3>
                     <div class="card-tools">
-                        <a href="{{ route('admin.company.create') }}" class="btn btn-flat btn-sm btn-theme"><i
+
+                        <a href="{{ route('admin.import.prayer.times') }}" class="btn btn-flat btn-sm btn-theme"><i
+                                class="fa-regular fa-square-plus"></i> Import CSV File</a>
+                        <a href="{{ route('admin.prayer-times.create') }}" class="btn btn-flat btn-sm btn-theme"><i
                                 class="fa-regular fa-square-plus"></i> Create
                             New</a>
                     </div>
@@ -44,34 +47,79 @@
                     <table id="dataList" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Client</th>
-                                <th>Company Name</th>
-                                <th>Server Name</th>
-                                <th>Logo</th>
+                                <th>Date</th>
+                                <th>Fajr</th>
+                                <th>Sunrise</th>
+                                <th>Zuhr</th>
+                                <th>Asr</th>
+                                <th>Maghrib</th>
+                                <th>Isha</th>
+                                <th>Jummah Prayer</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($dataSet as $data)
+                            @foreach ($prayerTime as $time)
                                 <tr>
-                                    <td>{{ $data->client }}</td>
-                                    <td>{{ $data->name }}</td>
-                                    <td>{{ $data->server_name }}</td>
-                                    <td>                                        
-                                        <a class="btn btn-flat btn-primary btn-theme" href="{{ asset('company_logo/' . $data->logo) }}" target="_blank"><i class="fa-solid fa-floppy-disk"></i></a>
+                                    <td>{{ PrayerDate($time->date) }}</td>
+                                    <td>
+                                        <span class="badge badge-primary">Adhan Time:</span> <span
+                                            class="badge badge-success">{{ $time->fajr_azan }}</span>
+                                        <span class="badge badge-primary">Prayer Time:</span> <span
+                                            class="badge badge-success">{{ $time->fajr }}</span>
                                     </td>
                                     <td>
-                                        <a class="btn btn-flat btn-primary"
-                                            href="{{ route('admin.company.edit', $data->id) }}">
+                                        <span class="badge badge-warning">{{ $time->sunrise }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-primary">Adhan Time</span> <span
+                                            class="badge badge-success"> {{ $time->zuhr_azan }}</span>
+                                        <span class="badge badge-primary">Prayer Time</span> <span
+                                            class="badge badge-success"> {{ $time->zuhr }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-primary">Adhan Time</span> <span
+                                            class="badge badge-success"> {{ $time->asr_azan }}</span>
+                                        <span class="badge badge-primary">Prayer Time</span> <span
+                                            class="badge badge-success"> {{ $time->asr }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-primary">Adhan Time</span> <span
+                                            class="badge badge-success"> {{ $time->maghrib_azan }}</span>
+                                        <span class="badge badge-primary">Prayer Time</span> <span
+                                            class="badge badge-success"> {{ $time->maghrib }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-primary">Adhan Time</span> <span
+                                            class="badge badge-success"> {{ $time->isha_azan }}</span>
+                                        <span class="badge badge-primary">Prayer Time</span> <span
+                                            class="badge badge-success"> {{ $time->isha }}</span>
+                                    </td>
+                                    <td>
+                                        @if($time->first_jumma_khutba != null)
+                                        <span class="badge badge-primary">First Khuthbah Time</span> <span
+                                            class="badge badge-success"> {{ $time->first_jumma_khutba }}</span>
+                                        <span class="badge badge-primary">First Friday Prayer Time</span> <span
+                                            class="badge badge-success"> {{ $time->first_jumma }}</span>
+                                        <br>
+                                        <span class="badge badge-primary">Second Khuthbah Time</span> <span
+                                            class="badge badge-success"> {{ $time->second_jumma_khutba }}</span>
+                                        <span class="badge badge-primary">Second Friday Prayer Time</span> <span
+                                            class="badge badge-success"> {{ $time->second_jumma }}</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-sm btn-flat btn-primary"
+                                            href="{{ route('admin.prayer-times.edit', $time->id) }}">
                                             <i class="fa-regular fa-pen-to-square"></i>
                                         </a>
                                         {{-- Update Status end --}}
-                                        <form action="{{ route('admin.company.destroy', $data->id) }}" method="POST"
+                                        <form action="{{ route('admin.prayer-times.destroy', $time->id) }}" method="POST"
                                             class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="button" onclick="DeleteFormSubmit(this)"
-                                                class="btn btn-flat btn-danger">
+                                                class="btn btn-sm btn-flat btn-danger">
                                                 <i class="fa-solid fa-trash-can"></i>
                                                 </a>
                                         </form>

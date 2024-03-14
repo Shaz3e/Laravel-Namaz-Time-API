@@ -25,7 +25,15 @@
 
         #prayerTimesContainer table {
             width: 100%;
+            text-align:center;
         }
+        #prayerTimesContainer table thead tr,
+        #prayerTimesContainer table tbody tr,
+        {
+            border-bottom:solid 1px rgba(0,0,0,0.9);
+        }
+        #prayerTimesContainer table thead tr th{}
+        #prayerTimesContainer table tbody tr td{}
 
         #prayerTimesContainer table .prayer-name{}
         #prayerTimesContainer table .prayer-azan{}
@@ -34,7 +42,6 @@
         .friday-prayers {
             margin: 10px auto;
             text-align: center;
-            border: solid 1px black;
         }
 
         .friday-prayers .friday-prayer {
@@ -69,35 +76,29 @@
         <table>
             <thead>
                 <tr>
-                    <th>Prayer Name</th>
-                    <th>Adhan Time</th>
+                    <th></th>
                     <th>Prayer Time</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Fajr</td>
-                    <td id="fajr_azan"></td>
                     <td id="fajr"></td>
                 </tr>
                 <tr>
                     <td>Zuhr</td>
-                    <td id="zuhr_azan"></td>
                     <td id="zuhr"></td>
                 </tr>
                 <tr>
                     <td>Asr</td>
-                    <td id="asr_azan"></td>
                     <td id="asr"></td>
                 </tr>
                 <tr>
                     <td>Maghrib</td>
-                    <td id="maghrib_azan"></td>
                     <td id="maghrib"></td>
                 </tr>
                 <tr>
                     <td>Isha</td>
-                    <td id="isha_azan"></td>
                     <td id="isha"></td>
                 </tr>
             </tbody>
@@ -119,7 +120,7 @@
         </div>
     </div>
 
-    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         // Show loading indicator
         $('#loadingIndicator').show();
